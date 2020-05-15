@@ -1,0 +1,39 @@
+<h1>Create an event</h1>
+<div class="new-post">
+  <div>
+    <%= form_for @events, local: true do |f| %>
+      <ul>
+        <% @events.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+      <p>
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </p>
+      <br/>
+      <br/>
+      <p>
+        <%= f.label :day %><br />
+        <%=  f.date_field :day %>
+      </p>
+      <br/>
+      <br/>
+      <p>
+        <%= f.label :time %><br />
+        <%= f.text_field :time %>
+      </p>
+      <br/>
+      <br/>
+      <p>
+        <%= f.label :about %><br />
+        <%= f.text_area :about %>
+      </p>
+      <br/>
+      <br/>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  </div>
+</div>

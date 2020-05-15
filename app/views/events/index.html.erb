@@ -1,0 +1,16 @@
+<h1>Events#index</h1>
+<% @events.each do |e| %>
+<p>
+<%= e.title%>
+</p>
+<p>
+<%= e.about%>
+</p>
+<p>
+<%= e.day.strftime('%B %d, %Y') %>
+</p>
+<p>
+<%= e.time%>
+</p>
+
+<% end %>
