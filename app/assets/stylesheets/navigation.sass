@@ -1,0 +1,26 @@
+@mixin links()
+    text-decoration: none
+    transition: 0.25s
+    color: black
+
+nav
+    height: 7vh
+    display: flex
+    align-items: center
+    padding: 5px 1.5rem
+    a
+        @include links()
+    ul
+        list-style: none
+        padding: 5px 1.2rem
+        display: flex
+        margin-left: auto
+        li
+            padding: 0px 1.2rem
+        a
+            @include links()
+            padding: 10px 1rem
+
+            &:hover
+                background: #dee3f4
+                border-radius: 8px

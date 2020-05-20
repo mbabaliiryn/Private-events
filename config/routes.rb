@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'attendances/index'
   get 'events/index'
   devise_for :users
-  resource :events
+  resources :events do 
+    resources :attendances
+  end
   root 'events#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'myevents' => 'users#show'
+  post 'attending', to:'attendances#create'
+  
 end

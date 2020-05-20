@@ -1,9 +1,9 @@
 <h1>Create an event</h1>
 <div class="new-post">
   <div>
-    <%= form_for @events, local: true do |f| %>
+    <%= form_with(model: @event, local: true)do |f| %>
       <ul>
-        <% @events.errors.full_messages.each do |error| %>
+        <% @event.errors.full_messages.each do |error| %>
           <li><%= error %></li>
         <% end %>
       </ul>

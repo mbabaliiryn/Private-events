@@ -4,29 +4,39 @@
     <title>PrivateEvents</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-    <body>
-    <nav>
-    <%= link_to "PRIVATE EVENTS", events_path %>
-    <ul>
-    <li>
-    <% if user_signed_in? %>
-            <%= link_to "logout", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "login", new_user_session_path %>
-          <%end%>
-
-
-    </li>
-    </ul>
-    </nav>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+  <body>
+    <div class="">
+      <nav>
+        <%= link_to "PRIVATE EVENTS", events_path %>
+        <ul>
+          <li>
+            <%= navmenu("logout", destroy_user_session_path, user_signed_in?)%>
+          </li>
+          <li>
+            <%= navmenu("Create Event", new_event_path, user_signed_in?)%>
+          </li>
+          <li>
+            <%= navmenu("My Events", "/myevents", user_signed_in?)%>
+          </li>
+        </ul>
+      </nav>
+      <%if alert%>
+        <div class="notification is-danger">
+          <button class="delete"></button>
+          <%= alert %>
+        </div>
+      <% elsif notice%>
+        <div class="notification is-primary">
+          <button class="delete"></button>
+          <%= notice %>
+        </div>
+      <%end%>
+      <%= yield %>
+   
+      <%= footer(user_signed_in?) %>
+    </div>
   </body>
 </html>

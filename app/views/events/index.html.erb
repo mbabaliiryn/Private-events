@@ -1,16 +1,68 @@
-<h1>Events#index</h1>
-<% @events.each do |e| %>
-<p>
-<%= e.title%>
-</p>
-<p>
-<%= e.about%>
-</p>
-<p>
-<%= e.day.strftime('%B %d, %Y') %>
-</p>
-<p>
-<%= e.time%>
-</p>
-
-<% end %>
+<div class="home container is-fluid">
+  <div class="event_hero">
+    <h1>
+      MADE FOR <br>
+      THOSE <br>
+      WHO DO
+      <img src="https://static.thenounproject.com/png/189854-200.png" alt="">
+    </H1>
+  </div>
+  <h1 class="upcoming-events">UPCOMING EVENTS</h1>
+  <div class="events-container">
+    <% @events.each do |e| %>
+      <%if e.day && e.day > Time.new%>
+        <%= link_to event_path(e) do %>
+          <div class="event-card" >
+            <div class="card-img" style="background: url(https://us.123rf.com/450wm/dvarg/dvarg1904/dvarg190400244/122680670-magic-red-crystal-with-sparkle-decoration-icon-for-games-cartoon-crystals-illustration-stone-healing.jpg?ver=6) 30% 60%">
+              <p class="attend">Attend</p>
+            </div>
+            <div class="card-contents">
+              <time datetime="2016-1-1">
+                <%= e.day.strftime('%B %d %Y').upcase %><br>
+                <%= e.time%>
+              </time>
+              <div>
+                <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+                <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.user.username}" : ""%></p>
+                <div class="content has-text-grey">
+                  <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    <% end %>
+  </div>
+  <div class="prev">
+    <h1 class="upcoming-events">PREVIOUS EVENTS</h1>
+    <div class="events-container ">
+      <% @events.each do |e| %>
+        <%if e.day && e.day < Time.new%>
+          <%= link_to event_path(e) do %>
+            <div class="event-card" >
+              <div class="card-img" style="background: url(https://us.123rf.com/450wm/dvarg/dvarg1904/dvarg190400244/122680670-magic-red-crystal-with-sparkle-decoration-icon-for-games-cartoon-crystals-illustration-stone-healing.jpg?ver=6) 30% 60%">
+                <p class="attend">Attend</p>
+              </div>
+              <div class="card-contents">
+                <time datetime="2016-1-1">
+                  <%= e.day.strftime('%B %d %Y').upcase %><br>
+                  <%= e.time%>
+                </time>
+                <div>
+                  <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+                  <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.user.username}" : ""%></p>
+                  <div class="content has-text-grey">
+                    <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
+      <% end %>
+    </div>
+  </div>
+</div>
