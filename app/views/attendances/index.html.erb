@@ -1,3 +1,5 @@
 <h1>Attendance#index</h1>
-&nbsp; &nbsp;<%=@attendances.size%>
+<%@event.attendees.each do |a|%>
+&nbsp; &nbsp;<%= a%>
+<%end%>
 

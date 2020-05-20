@@ -1,24 +1,28 @@
+# frozen_string_literal: true
+
 class AttendancesController < ApplicationController
   def index
-    @attendances = Attendance.all
-    # find_by event_id: params[:id]
+    @event = Event.find(params[:event_id])
   end
-  def new 
+
+  def new
     @attendances = Attendance.new
   end
-  def create 
-    @attendances= Attendance.new(user_id: current_user.id)
-    @attendances.event_id = params[:id]
+
+  def create
+    @event = Event.find(params[:event_id])
+    @attendances = @event.attendees.create(attendee_id: current_user.id)
     if @attendances.save
-      redirect_to event_path
+      redirect_to event_path(@event)
     else
-    redirect_to events_path 
-    
+      redirect_to events_path
+
     end
   end
 
-  private 
+  private
+
   def attendance_params
-    # params.require(:attendance).permit(:)
+    params.require(:attendance).permit(:id)
   end
 end

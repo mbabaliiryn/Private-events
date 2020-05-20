@@ -2,7 +2,7 @@
   <div class="event_hero">
     <div class="event-view-title">
       <h2> <%=@event.title%> </h2>
-      <p class="has-text-weight-semibold"><small><%= "by #{@owner.username}"%></small></p>
+      <p class="has-text-weight-semibold"><small><%= "by #{@event.creator.username}"%></small></p>
       <p><small>Town Hall, Kisumu</small></p>
     </div>
     <div class="event-date-time">
@@ -11,9 +11,9 @@
         <%= @event.day.strftime('%B %d, %Y').upcase %>
         <%= @event.time%>
       </time>
-      <%= attend_button(@event.user, current_user, @event.attendances, @event)%>
+      <%= attend_button(@event.creator_id, current_user, @event.attendees, @event)%>
       <p class="has-text-grey"><small>No refunds</small></p>
-
+  
     </div>
   </div>
   <div class="container">

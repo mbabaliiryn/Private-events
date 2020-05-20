@@ -10,7 +10,7 @@
   <body>
     <div class="">
       <nav>
-        <%= link_to "PRIVATE EVENTS", events_path %>
+        <%= link_to "PRIVATE EVENTS", events_path, class: "has-text-weight-bold" %>
         <ul>
           <li>
             <%= navmenu("logout", destroy_user_session_path, user_signed_in?)%>

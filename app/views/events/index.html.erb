@@ -23,7 +23,7 @@
               </time>
               <div>
                 <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
-                <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.user.username}" : ""%></p>
+                <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.creator.username}" : ""%></p>
                 <div class="content has-text-grey">
                   <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
                   <br>
@@ -52,7 +52,7 @@
                 </time>
                 <div>
                   <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
-                  <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.user.username}" : ""%></p>
+                  <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.creator.username}" : ""%></p>
                   <div class="content has-text-grey">
                     <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
                     <br>

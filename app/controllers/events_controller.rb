@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   # GET /authors/1.json
   def show
     @event = Event.find(params[:id])
-    @owner = User.find(@event.user_id)
+    # @owner = User.find(@event.user_id)
   end
 
   # GET /authors/new
