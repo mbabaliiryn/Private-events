@@ -1,0 +1,15 @@
+
+
+<div class="login-cover">
+<div>
+<h2>Log in</h2>
+
+<%= form_tag usersessions_path, method: :post do %>
+    <%= text_field_tag :username,nil, placeholder: "username" %>
+    <%= submit_tag "Login" %>
+  
+<% end %>
+
+
+</div>
+</div>

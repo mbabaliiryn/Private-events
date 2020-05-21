@@ -1,14 +1,12 @@
 module ApplicationHelper
   def navmenu(name, link, userStatus)
-    if name == 'logout'
-      if userStatus
-        return link_to name, link, method: :delete
+      if !userStatus
+        return link_to name, usersession_path(userStatus), method: :delete
       else
-        return link_to 'login', new_user_session_path
+        return link_to 'login', new_usersession_path
       end
     end
-    return link_to name, link if userStatus
-  end
+  
 
   def warnings(msg)
     if msg.include?('notice')

@@ -12,14 +12,12 @@
       <nav>
         <%= link_to "PRIVATE EVENTS", events_path, class: "has-text-weight-bold" %>
         <ul>
+        
           <li>
-            <%= navmenu("logout", destroy_user_session_path, user_signed_in?)%>
+          <%= navmenu("logout", usersession_path, current_user) %>
+         
           </li>
           <li>
-            <%= navmenu("Create Event", new_event_path, user_signed_in?)%>
-          </li>
-          <li>
-            <%= navmenu("My Events", "/myevents", user_signed_in?)%>
           </li>
         </ul>
       </nav>
@@ -35,8 +33,6 @@
         </div>
       <%end%>
       <%= yield %>
-   
-      <%= footer(user_signed_in?) %>
     </div>
   </body>
 </html>
