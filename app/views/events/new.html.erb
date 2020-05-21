@@ -1,5 +1,5 @@
-<h1>Create an event</h1>
 <div class="new-post">
+  <h1>Create an event</h1>
   <div>
     <%= form_with(model: @event, local: true)do |f| %>
       <ul>
@@ -13,16 +13,17 @@
       </p>
       <br/>
       <br/>
-      <p>
-        <%= f.label :day %><br />
-        <%=  f.date_field :day %>
-      </p>
-      <br/>
-      <br/>
-      <p>
-        <%= f.label :time %><br />
-        <%= f.text_field :time %>
-      </p>
+      <div id="inline-form">
+        <p>
+          <%= f.label :day %><br />
+          <%=  f.date_field :day %>
+        </p>
+        <p>
+          <%= f.label :time %><br />
+          <%time=["1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM","1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM", "9 PM", "10 PM", "11 PM", "12 AM"] %>
+          <%= f.select :time, options_for_select(time.collect{ |u| u }) %>
+        </p>
+      </div>
       <br/>
       <br/>
       <p>
