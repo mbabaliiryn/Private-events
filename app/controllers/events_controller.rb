@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
     @events = Event.all
   end
@@ -56,42 +57,6 @@ class EventsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_author
-  #   @author = Author.find(params[:id])
-  # end
-
-  # def index
-  #   @events = Event.all
-  # end
-
-  # def new
-  #   @events = Event.new
-
-  # end
-  # def create
-  #   @events = Event.new(event_params)
-  #   @events.user_id = current_user.id
-  #   if @events.save
-  #     redirect_to events_path
-  #   else
-  #     render :new
-  #   end
-
-  # end
-
-  # def show
-  #   @events = Event.all
-  #   render :index
-  # end
-  # def edit
-  #   @events = Event.find(params[:id])
-  #   render :show
-  # end
-
-  private
-
   def event_params
     params.require(:event).permit(:title, :day, :time, :about)
   end

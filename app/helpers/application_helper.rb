@@ -1,13 +1,12 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  def navmenu(name, link, userStatus)
-    if name == 'logout'
-      if userStatus
-        return link_to name, link, method: :delete
-      else
-        return link_to 'login', new_user_session_path
-      end
+  def navmenu(userStatus)
+    if !userStatus
+      link_to 'login', new_usersession_path
+    else
+      link_to 'logout', usersession_path(userStatus), method: :delete
     end
-    return link_to name, link if userStatus
   end
 
   def warnings(msg)
@@ -24,5 +23,9 @@ module ApplicationHelper
     else
       ''
     end
+  end
+
+  def current_menu(name, url)
+    link_to name, url if current_user
   end
 end

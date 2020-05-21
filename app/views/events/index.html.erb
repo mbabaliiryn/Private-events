@@ -14,7 +14,9 @@
         <%= link_to event_path(e) do %>
           <div class="event-card" >
             <div class="card-img" style="background: url(https://us.123rf.com/450wm/dvarg/dvarg1904/dvarg190400244/122680670-magic-red-crystal-with-sparkle-decoration-icon-for-games-cartoon-crystals-illustration-stone-healing.jpg?ver=6) 30% 60%">
-              <p class="attend">Attend</p>
+              <p class="attend">
+                <%= attending_note(e, current_user)%>
+              </p>
             </div>
             <div class="card-contents">
               <time datetime="2016-1-1">
@@ -23,7 +25,7 @@
               </time>
               <div>
                 <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
-                <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.creator.username}" : ""%></p>
+                <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
                 <div class="content has-text-grey">
                   <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
                   <br>
@@ -43,7 +45,7 @@
           <%= link_to event_path(e) do %>
             <div class="event-card" >
               <div class="card-img" style="background: url(https://us.123rf.com/450wm/dvarg/dvarg1904/dvarg190400244/122680670-magic-red-crystal-with-sparkle-decoration-icon-for-games-cartoon-crystals-illustration-stone-healing.jpg?ver=6) 30% 60%">
-                <p class="attend">Attend</p>
+                <p class="attend"><%= attending_note(e, current_user)%></p>
               </div>
               <div class="card-contents">
                 <time datetime="2016-1-1">
@@ -52,7 +54,7 @@
                 </time>
                 <div>
                   <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
-                  <p class="subtitle is-6"><%= user_signed_in? ? "@#{e.creator.username}" : ""%></p>
+                  <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
                   <div class="content has-text-grey">
                     <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
                     <br>
