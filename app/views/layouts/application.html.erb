@@ -19,7 +19,13 @@
             <%= current_menu("My Events", "/myevents") %>
           </li>
           <li>
+            <%= current_menu("My Invites", "/invites") %>
+          </li>
+          <li>
             <%= navmenu(current_user) %>
+          </li>
+          <li>
+            <%= register(current_user) %>
           </li>
         </ul>
       </nav>

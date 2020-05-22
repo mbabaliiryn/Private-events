@@ -1,16 +1,28 @@
 module EventsHelper
-    def attending_note(event, user)
-        post_link ='Book Now'
-        view_attendees = nil
-        attending = 'Attending'
-        if user && event.creator_id == user.id
-          view_attendees
-        elsif !event.attendees.empty? && (event.attendees.to_a.any? { |e| e.user == user })
-          attending
-        elsif event.attendees.empty?
-          post_link
-        else
-          post_link
-        end
-      end
+  # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def attending_note(event, user)
+    post_link = 'Accept Invitation'
+    view_attendees = nil
+    attending = 'Attending'
+    check_empty = event.attendees.empty?
+    user_exists = event.attendees.attending.to_a.any? { |e| e.users == user }
+
+    if user && event.creator_id == user.id
+      'view attendees'
+    elsif !check_empty && user_exists
+      attending
+    elsif !check_empty && user_exists
+      post_link
+    elsif check_empty || !user
+      view_attendees
+    end
+  end
+
+  # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def drop_menu(form)
+    time = ['1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM',
+            '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM',
+            '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 AM']
+    form.select :time, options_for_select(time.collect { |u| u })
+  end
 end

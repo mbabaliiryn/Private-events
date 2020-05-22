@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
-  def navmenu(userStatus)
-    if !userStatus
+  def navmenu(user_status)
+    if !user_status
       link_to 'login', new_usersession_path
     else
-      link_to 'logout', usersession_path(userStatus), method: :delete
+      link_to 'logout', usersession_path(user_status), method: :delete
     end
   end
 
@@ -27,5 +25,9 @@ module ApplicationHelper
 
   def current_menu(name, url)
     link_to name, url if current_user
+  end
+
+  def register(user)
+    return link_to 'Sign Up', new_user_path unless user
   end
 end

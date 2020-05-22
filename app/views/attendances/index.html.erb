@@ -6,22 +6,49 @@
         Userame
       </div>
       <div class="cell">
-        Regitration Date
+        Accepted On
       </div>
       <div class="cell">
         Email
       </div>
     </div>
-    <%@event.attendees.each do |a|%>
+    <%@event.attendees.attending.each do |a|%>
       <div class="row">
         <div class="cell" data-title="Name">
-          <%= a.user.username%>
+          <%= a.users.username%>
+        </div>
+        <div class="cell" data-title="Age">
+          <%=a.updated_at.strftime('%B %d, %Y')%>
+        </div>
+        <div class="cell" data-title="Occupation">
+          <%= a.users.email%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <h1>Pending Invites</h1>
+  <div class="table">
+    <div class="row header">
+      <div class="cell">
+        Userame
+      </div>
+      <div class="cell">
+        Invited On
+      </div>
+      <div class="cell">
+        Email
+      </div>
+    </div>
+    <%@event.attendees.pending.each do |a|%>
+      <div class="row">
+        <div class="cell" data-title="Name">
+          <%= a.users.username%>
         </div>
         <div class="cell" data-title="Age">
           <%=a.created_at.strftime('%B %d, %Y')%>
         </div>
         <div class="cell" data-title="Occupation">
-          <%= a.user.email%>
+          <%= a.users.email%>
         </div>
       </div>
     <%end%>

@@ -1,16 +1,15 @@
-# frozen_string_literal: true
-
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @events = Event.all
+    @upcoming_events = Event.upcoming_events
+    @prev_events = Event.previous_events
   end
 
   # GET /authors/1
   # GET /authors/1.json
   def show
     @event = Event.find(params[:id])
-    # @owner = User.find(@event.user_id)
+    # @attendances = Attendance.new
   end
 
   # GET /authors/new
@@ -57,6 +56,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:title, :day, :time, :about)
   end

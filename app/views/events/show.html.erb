@@ -12,23 +12,30 @@
         <%= @event.time%>
       </time>
       <%= attend_button(@event, current_user)%>
+      <%if @event.creator_id == current_user.id%>
+        <div class="send_invite">
+          <%= form_tag event_attendances_path(@event), method: :post do %>
+            <%= email_field_tag  :email, nil, placeholder: "Email" %>
+            <%= submit_tag "Send Invite" %>
+          <% end %>
+        </div>
+      <%end%>
       <p class="has-text-grey"><small>No refunds</small></p>
-  
     </div>
   </div>
   <div class="container">
     <div class="columns is-desktop content-spacing">
       <div class="column">
-    <h1 class="title-space">Description</h1>
+        <h1 class="title-space">Description</h1>
         <p>
           <%=@event.about%>
         </p>
       </div>
       <div class="column">
-       <h1 class="title-space">Event Location</h1>
-       <div class="map">
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8115002745994!2d34.75385071925101!3d-0.10593891042590267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa49506ccaa97%3A0x5324cd219295c23c!2sKisumu%20Municipal%20City%20Hall!5e0!3m2!1sen!2ske!4v1589884233473!5m2!1sen!2ske"  style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-       </div>
+        <h1 class="title-space">Event Location</h1>
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8115002745994!2d34.75385071925101!3d-0.10593891042590267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa49506ccaa97%3A0x5324cd219295c23c!2sKisumu%20Municipal%20City%20Hall!5e0!3m2!1sen!2ske!4v1589884233473!5m2!1sen!2ske"  style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
       </div>
     </div>
   </div>

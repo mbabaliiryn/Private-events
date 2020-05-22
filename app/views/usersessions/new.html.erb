@@ -1,14 +1,10 @@
-
-
 <div class="login-cover">
-<div>
-<h1>Log in</h1>
-<%= form_tag usersessions_path, method: :post do %>
-    <%= text_field_tag :username,nil, placeholder: "username" %>
-    <%= submit_tag "Login" %>
-  
-<% end %>
-
-
-</div>
+  <div>
+    <h1>Log in</h1>
+    <%= form_tag usersessions_path, method: :post do %>
+      <%= text_field_tag :username,nil, placeholder: "username" %>
+      <%= submit_tag "Login" %>
+      <%= link_to  "Register", new_user_path %>
+    <% end %>
+  </div>
 </div>
