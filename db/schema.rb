@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_132435) do
     t.string "title"
     t.text "about"
     t.datetime "day"
-    t.string "time"
+    t.string "location"
     t.integer "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

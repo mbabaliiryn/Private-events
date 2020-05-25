@@ -16,11 +16,11 @@
       <div id="inline-form">
         <p>
           <%= f.label :day %><br />
-          <%=  f.date_field :day %>
+          <%= f.datetime_field :day %>
         </p>
         <p>
-          <%= f.label :time %><br />
-          <%= drop_menu(f) %>
+          <%= f.label :location %><br />
+          <%= f.text_field :location %>
         </p>
       </div>
       <br/>

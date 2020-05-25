@@ -4,4 +4,8 @@ class Event < ApplicationRecord
 
   scope :upcoming_events, -> { where('day >= ?', Time.zone.now) }
   scope :previous_events, -> { where('day < ?', Time.zone.now) }
+  validates :title, presence: true
+  validates :about, presence: true
+  validates :location, presence: true
+  validates :day, presence: true
 end
