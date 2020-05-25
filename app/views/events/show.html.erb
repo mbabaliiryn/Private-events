@@ -12,7 +12,7 @@
         <%= @event.time%>
       </time>
       <%= attend_button(@event, current_user)%>
-      <%if @event.creator_id == current_user.id%>
+      <%if invite(@event)%>
         <div class="send_invite">
           <%= form_tag event_attendances_path(@event), method: :post do %>
             <%= email_field_tag  :email, nil, placeholder: "Email" %>
