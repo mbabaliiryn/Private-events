@@ -1,4 +1,5 @@
 class AttendancesController < ApplicationController
+  include InvitesHelper
   def index
     @event = Event.find(params[:event_id])
   end
@@ -20,6 +21,7 @@ class AttendancesController < ApplicationController
       @attendances = @event.attendees.create(attendee_id: @user.id)
       if @attendances.save
         flash[:notice] = 'Invite successful!'
+        sgmail(@user[:email], @event[:title])
         redirect_to event_invites_path(@event)
       else
         redirect_to events_path

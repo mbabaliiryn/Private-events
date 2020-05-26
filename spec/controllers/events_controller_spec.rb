@@ -24,7 +24,8 @@ RSpec.describe EventsController, type: :controller do
 
   context 'POST # CREATE ' do
     it 'Responds to HTML by default' do
-      post :create, params: { title: 'Deep Dive', day: '2020-05-25 15:39:19.35599 +0300', location: 'LakeHub', about: 'Lorem ipsum dolor' }
+      post :create, params: { title: 'Deep Dive', day: '2020-05-25 15:39:19.35599 +0300',
+                              location: 'LakeHub', about: 'Lorem ipsum dolor' }
       expect(response.content_type).to eq 'text/html; charset=utf-8'
     end
   end

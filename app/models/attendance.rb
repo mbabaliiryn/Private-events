@@ -9,10 +9,4 @@ class Attendance < ApplicationRecord
 
   scope :attending, -> { where(attending: true) }
   scope :pending, -> { where(attending: false) }
-
-  private
-
-  def not_current_user()
-    nil
-  end
 end

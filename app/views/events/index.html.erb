@@ -1,4 +1,7 @@
-<div class="home container is-fluid">
+<div class="home container is-fluid rellax" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500">
   <div class="event_hero">
     <h1>
       MADE FOR <br>
@@ -8,7 +11,7 @@
     </H1>
   </div>
   <h1 class="upcoming-events">UPCOMING EVENTS</h1>
-  <div class="events-container upcoming-section ">
+  <div class="events-container upcoming-section" data-aos="fade-down">
     <% @upcoming_events.each do |e| %>
       <%= link_to event_path(e) do %>
         <div class="event-card" >
@@ -37,7 +40,7 @@
     <% end %>
   </div>
   <h1 class="upcoming-events">PREVIOUS EVENTS</h1>
-  <div class="events-container ">
+  <div class="events-container " data-aos="fade-up-right">
     <% @prev_events.each do |e| %>
       <%= link_to event_path(e) do %>
         <div class="event-card" >
