@@ -29,6 +29,6 @@ module EventsHelper
 
   def invite(event)
     attendee = event.attendees.attending.to_a.any? { |e| e.users == current_user }
-    event.creator_id == current_user.id || attendee
+    (event.creator_id == current_user.id || attendee) && event.day > Time.now
   end
 end

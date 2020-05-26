@@ -1,9 +1,5 @@
 module InvitesHelper
-    def uninvited(event, users)
-        arr = []
-        event.attendees.each do |u|
-            arr = users.select {|a| a[:id] != u.users[:id] }
-        end
-        arr
-    end
+  def uninvited(event, users)
+    users - event.attendees.map(&:users).to_a
+  end
 end

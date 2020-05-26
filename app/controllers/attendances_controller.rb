@@ -12,7 +12,7 @@ class AttendancesController < ApplicationController
     @user = User.find_by(email: params[:email])
     if !@user
       flash[:alert] = 'Invalid email!'
-      redirect_to event_path(@event)
+      redirect_to event_invites_path(@event)
     elsif @user == current_user
       flash[:alert] = 'You cannot invite yourself!'
       redirect_to event_path(@event)
@@ -20,7 +20,7 @@ class AttendancesController < ApplicationController
       @attendances = @event.attendees.create(attendee_id: @user.id)
       if @attendances.save
         flash[:notice] = 'Invite successful!'
-        redirect_to event_path(@event)
+        redirect_to event_invites_path(@event)
       else
         redirect_to events_path
       end

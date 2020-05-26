@@ -1,3 +1,15 @@
 .upcoming-section::-webkit-scrollbar {
   display: none;
 }
+
+.invites {
+  background: rgb(60, 17, 177);
+  color: white;
+  text-align: center;
+  margin: 10px 0px;
+  border-radius: 5px;
+  padding: 8px 1rem;
+}
+.invites:hover {
+  color: white;
+}

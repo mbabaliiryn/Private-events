@@ -6,9 +6,11 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/5e0cee5c01.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="body">
+    <div class="content-wrapper">
       <nav>
         <%= link_to "PRIVATE EVENTS", events_path, class: "has-text-weight-bold" %>
         <ul>
@@ -41,6 +43,7 @@
         </div>
       <%end%>
       <%= yield %>
+      </div>
     </div>
     <%= footer(current_user) %>
   </body>

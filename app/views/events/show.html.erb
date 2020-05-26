@@ -3,13 +3,13 @@
     <div class="event-view-title">
       <h2> <%=@event.title%> </h2>
       <p class="has-text-weight-semibold"><small><%= "by #{@event.creator.username}"%></small></p>
-      <p><small>Town Hall, Kisumu</small></p>
+      <p><small><%= @event.location%></small></p>
     </div>
     <div class="event-date-time">
       <h2 class="has-text-weight-bold">Date & Time</h2>
       <time datetime="2016-1-1">
         <%= @event.day.strftime('%B %d, %Y').upcase %>
-        <%= @event.time%>
+        <%= @event.day.strftime('%T').upcase %>
       </time>
       <%= attend_button(@event, current_user)%>
       <%if invite(@event)%>
@@ -19,6 +19,7 @@
             <%= submit_tag "Send Invite" %>
           <% end %>
         </div>
+        <%= link_to  "Send Invites", event_invites_path(@event), class: "invites" %>
       <%end%>
       <p class="has-text-grey"><small>No refunds</small></p>
     </div>

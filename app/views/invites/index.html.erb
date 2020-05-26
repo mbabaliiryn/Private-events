@@ -11,6 +11,9 @@
       <div class="cell">
         Email
       </div>
+      <div class="cell">
+        Action
+      </div>
     </div>
     <% uninvited(@event, @users).each do |a|%>
       <div class="row">
@@ -22,6 +25,9 @@
         </div>
         <div class="cell" data-title="Occupation">
           <%= a.email%>
+        </div>
+        <div class="cell" data-title="Occupation">
+          <%= link_to  " Invite ", event_attendances_path(@event, email: a.email), method: :post, class: "invites fas fa-plus"%>
         </div>
       </div>
     <%end%>
