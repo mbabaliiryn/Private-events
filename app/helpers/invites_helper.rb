@@ -2,7 +2,7 @@ module InvitesHelper
   require 'sendgrid-ruby'
   include SendGrid
   def sgmail(to, title)
-    from = SendGrid::Email.new(email: "#{current_user.username}@privateevents.com")
+    from = SendGrid::Email.new(email: 'invite@privateevents.com')
     to = SendGrid::Email.new(email: to)
     subject = "Invitation To #{title}"
     content = SendGrid::Content.new(type: 'text/plain', value: "You have been invited to attend #{title}.
