@@ -14,6 +14,16 @@ RSpec.describe UsersController, type: :controller do
       get :new
       expect(response.status).to eq(200)
     end
+
+    it 'Renders :new template' do
+      get :new
+      expect(response).to render_template(:new)
+    end
+
+    it 'Assigns new User to @User' do
+      get :new
+      expect(assigns(:user)).to be_a_new(User)
+    end
   end
 
   context 'POST # create' do

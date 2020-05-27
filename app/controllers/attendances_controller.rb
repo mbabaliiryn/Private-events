@@ -32,7 +32,9 @@ class AttendancesController < ApplicationController
   def update
     @attendee = Attendance.find_by(attendee_id: current_user.id, 
       event_id: params[:event_id])
-    if @attendee.update(attending: true)
+
+      @attendee.update_attributes!(attending: true)
+    if @attendee.save
       redirect_to event_path(@attendee.event_id)
     else
       redirect_to events_path

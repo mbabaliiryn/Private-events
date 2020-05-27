@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @attendee = Attendance.find_by(attendee_id: current_user.id)
-    @events = Event.all
+    @attendee = Attendance.where(attendee_id: current_user.id)
+    @attendee = @attendee.map(&:event_id)
+    @events = Event.where(id: @attendee)
   end
 
   def show

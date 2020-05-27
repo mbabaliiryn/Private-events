@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'invites/index'
-  get 'attendances/index'
-  get 'events/index'
   resources :events do
     resources :attendances
     resources :invites

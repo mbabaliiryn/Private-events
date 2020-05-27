@@ -1,7 +1,7 @@
 module AttendancesHelper
   # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def attend_button(event, user)
-    post_link = link_to 'Accept Invitation', event_attendance_path(current_user), method: :put, class: 'book-now'
+    post_link = link_to 'Accept Invitation', event_attendance_path(event), method: :patch, class: 'book-now'
     view_attendees = link_to "View Attendees(#{event.attendees.attending.size})",
                              event_attendances_path(event), class: 'book-now'
     attending = link_to 'Attending', '#', class: 'attending-btn'

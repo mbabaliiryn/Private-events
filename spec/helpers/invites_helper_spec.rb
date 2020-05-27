@@ -1,15 +1,19 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the InvitesHelper. For example:
-#
-# describe InvitesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe InvitesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.create!(username: 'pato', email: 'pato@gmail.com') }
+  let(:event) do
+    Event.create!(title: 'Ruby Docs', about: 'Blah',
+                  day: '2020-05-25 15:39:19.35599 +0300',
+                  location: 'LakeHub', creator_id: 1)
+  end
+  context 'Uninvited Method' do
+    it 'returns list of uninvited users' do
+      user
+      event
+      evt = Event.find(1)
+      usr = User.all
+      expect(uninvited(evt, usr).size).to eq(1)
+    end
+  end
 end

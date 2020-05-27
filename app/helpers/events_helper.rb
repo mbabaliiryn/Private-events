@@ -31,4 +31,8 @@ module EventsHelper
     attendee = event.attendees.attending.to_a.any? { |e| e.users == current_user }
     (event.creator_id == current_user.id || attendee) && event.day > Time.now
   end
+
+  def show_item(item)
+    return item ? "": "display: none !important"
+  end
 end
