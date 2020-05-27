@@ -1,3 +1,4 @@
+# rubocop:disable Layout/Tab
 class SignupForm
   include Capybara::DSL
   def visit_page
@@ -12,3 +13,4 @@ class SignupForm
     self
   end
 end
+# rubocop:enable Layout/Tab
