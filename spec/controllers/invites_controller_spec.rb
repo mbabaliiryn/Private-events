@@ -10,9 +10,9 @@ RSpec.describe InvitesController do
   context 'GET #index' do
     it 'renders the template :index' do
       user
-      event 
+      event
       allow_any_instance_of(InvitesController).to receive(:current_user).and_return(user)
-      get :index, params: {event_id: 1}
+      get :index, params: { event_id: 1 }
       expect(response).to render_template(:index)
     end
   end

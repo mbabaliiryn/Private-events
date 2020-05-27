@@ -4,7 +4,7 @@
     <%= form_tag users_path, method: :post do %>
       <%= text_field_tag :username,nil, placeholder: "username" %>
       <%= text_field_tag :email,nil, placeholder: "email" %>
-      <%= submit_tag "Sign Up" %>
+      <%= submit_tag "Register" %>
       <%= link_to  "Log in", new_usersession_path %>
     <% end %>
   </div>

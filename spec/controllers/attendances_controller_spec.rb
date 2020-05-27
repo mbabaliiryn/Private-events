@@ -6,6 +6,7 @@ RSpec.describe AttendancesController, type: :controller do
                   day: '2020-05-25 15:39:19.35599 +0300',
                   location: 'LakeHub', creator_id: 1)
   end
+
   context 'GET # index' do
     it 'should have a 200 status code' do
       user
