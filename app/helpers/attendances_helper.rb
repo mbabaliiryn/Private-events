@@ -10,7 +10,7 @@ module AttendancesHelper
       view_attendees
     when ->(h) { !h.attendees.empty? && (h.attendees.attending.to_a.any? { |e| e.users == user }) }
       attending
-    when ->(h) { !h..attendees.empty? && (h.attendees.pending.to_a.any? { |e| e.users == user }) }
+    when ->(h) { !h.attendees.empty? && (h.attendees.pending.to_a.any? { |e| e.users == user }) }
       post_link
     when ->(h) { h.attendees.empty? || h.attendees.to_a.none? { |e| e.users == user } }
       nil
