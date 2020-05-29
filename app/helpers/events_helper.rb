@@ -1,5 +1,5 @@
 module EventsHelper
-  # rubocop: disable Metrics/CyclomaticComplexity
+  # rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def attending_note(event, user)
     post_link = 'Accept Invitation'
     view_attendees = nil
@@ -11,8 +11,12 @@ module EventsHelper
     case user
     when ->(u) { u && u.id == event.creator_id }
       'view attendees'
+    when ->(_u) { !check_empty && user_exists && event.day < Time.now }
+      'Attended'
     when ->(_u) { !check_empty && user_exists }
       attending
+    when ->(_u) { !check_empty && invited && event.day < Time.now }
+      'Invitation Expired'
     when ->(_u) { !check_empty && invited }
       post_link
     when ->(u) { check_empty || !u }
@@ -20,7 +24,7 @@ module EventsHelper
     end
   end
 
-  # rubocop: enable Metrics/CyclomaticComplexity
+  # rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def invite(event)
     attendee = event.attendees.attending.to_a.any? { |e| e.users == current_user }

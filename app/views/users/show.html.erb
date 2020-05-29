@@ -2,9 +2,9 @@
      data-aos-anchor="#example-anchor"
      data-aos-offset="500"
      data-aos-duration="500">
-     <h1 class="upcoming-events">MY EVENTS</h1>
-     <hr>
-     <h1>UPCOMING EVENTS</h1>
+  <h1 class="upcoming-events">MY EVENTS</h1>
+  <hr>
+  <h1>UPCOMING EVENTS</h1>
   <div class="events-container upcoming-section" data-aos="fade-down">
     <% @upcoming_events.each do |e| %>
       <%= link_to event_path(e) do %>
@@ -29,7 +29,7 @@
       <%end%>
     <% end %>
   </div>
-   <h1>PREVIOUS EVENTS</h1>
+  <h1>PREVIOUS EVENTS</h1>
   <div class="events-container " data-aos="fade-up-right">
     <% @prev_events.each do |e| %>
       <%= link_to event_path(e) do %>
@@ -56,9 +56,9 @@
       <%end%>
     <% end %>
   </div>
-   <h1 class="upcoming-events">Attended Events</h1>
-     <hr>
-     <h1>UPCOMING EVENTS</h1>
+  <h1 class="upcoming-events">Attended Events</h1>
+  <hr>
+  <h1>UPCOMING EVENTS</h1>
   <div class="events-container upcoming-section" data-aos="fade-down">
     <% future_events(@attended_events).each do |e| %>
       <%= link_to event_path(e) do %>
