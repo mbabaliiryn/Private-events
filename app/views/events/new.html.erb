@@ -1,0 +1,23 @@
+<div class="new-post" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500">
+  <h1>Create an event</h1>
+  <div>
+    <%= form_tag events_path, method: :post do %>
+      <%= text_field_tag :title,nil, placeholder: "Title", class: "title-input" %>
+      <br/>
+      <br/>
+      <div id="inline-form">
+        <%= datetime_field_tag :day %>
+        <%= text_field_tag :location,nil, placeholder: "Location" %>
+      </div>
+      <br/>
+      <br/>
+      <%= text_area_tag :about,nil, placeholder: "Description" %>
+      <br/>
+      <br/>
+      <%= submit_tag "Post Event" %>
+    <% end %>
+  </div>
+</div>

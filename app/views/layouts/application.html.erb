@@ -4,12 +4,49 @@
     <title>PrivateEvents</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5e0cee5c01.js" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="body">
+      <div class="content-wrapper">
+        <nav>
+          <%= link_to "PRIVATE EVENTS", events_path, class: "has-text-weight-bold" %>
+          <ul>
+            <li>
+              <%= current_menu("Create Event", new_event_path) %>
+            </li>
+            <li>
+              <%= current_menu("My Events", "/myevents") %>
+            </li>
+            <li>
+              <%= navmenu(current_user) %>
+            </li>
+            <li>
+              <%= register(current_user) %>
+            </li>
+          </ul>
+        </nav>
+        <%if alert%>
+          <div class="notification is-danger">
+            <button class="delete"></button>
+            <%= alert %>
+          </div>
+        <% elsif notice%>
+          <div class="notification is-primary">
+            <button class="delete"></button>
+            <%= notice %>
+          </div>
+        <%end%>
+        <%= yield %>
+      </div>
+    </div>
+    <%= footer(current_user) %>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

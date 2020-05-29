@@ -1,0 +1,111 @@
+<div class="home container is-fluid rellax" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500">
+  <h1 class="upcoming-events">MY EVENTS</h1>
+  <hr>
+  <h1>UPCOMING EVENTS</h1>
+  <div class="events-container upcoming-section" data-aos="fade-down">
+    <% @upcoming_events.each do |e| %>
+      <%= link_to event_path(e) do %>
+        <div class="event-card" >
+          <div class="card-img" style="background: url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) 30% 60%">
+            <p class="attend" style="<%=show_item(attending_note(e, current_user))%>"> <%= attending_note(e, current_user)%></p>
+          </div>
+          <div class="card-contents">
+            <time datetime="2016-1-1">
+              <%= e.day.strftime('%B %d %Y %T').upcase %><br>
+            </time>
+            <div>
+              <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+              <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
+              <div class="content has-text-grey">
+                <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <h1>PREVIOUS EVENTS</h1>
+  <div class="events-container " data-aos="fade-up-right">
+    <% @prev_events.each do |e| %>
+      <%= link_to event_path(e) do %>
+        <div class="event-card" >
+          <div class="card-img" style="background: url(https://us.123rf.com/450wm/dvarg/dvarg1904/dvarg190400244/122680670-magic-red-crystal-with-sparkle-decoration-icon-for-games-cartoon-crystals-illustration-stone-healing.jpg?ver=6) 30% 60%">
+            <% if attending_note(e, current_user)%>
+              <p class="attend"> <%= attending_note(e, current_user)%> </p>
+            <%end%>
+          </div>
+          <div class="card-contents">
+            <time datetime="2016-1-1">
+              <%= e.day.strftime('%B %d %Y').upcase %><br>
+            </time>
+            <div>
+              <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+              <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
+              <div class="content has-text-grey">
+                <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <h1 class="upcoming-events">Attended Events</h1>
+  <hr>
+  <h1>UPCOMING EVENTS</h1>
+  <div class="events-container upcoming-section" data-aos="fade-down">
+    <% future_events(@attended_events).each do |e| %>
+      <%= link_to event_path(e) do %>
+        <div class="event-card" >
+          <div class="card-img" style="background: url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) 30% 60%">
+            <p class="attend" style="<%=show_item(attending_note(e, current_user))%>"> <%= attending_note(e, current_user)%></p>
+          </div>
+          <div class="card-contents">
+            <time datetime="2016-1-1">
+              <%= e.day.strftime('%B %d %Y %T').upcase %><br>
+            </time>
+            <div>
+              <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+              <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
+              <div class="content has-text-grey">
+                <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <h1>PREVIOUS EVENTS</h1>
+  <div class="events-container upcoming-section" data-aos="fade-down">
+    <% previous_events(@attended_events).each do |e| %>
+      <%= link_to event_path(e) do %>
+        <div class="event-card" >
+          <div class="card-img" style="background: url(https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) 30% 60%">
+            <p class="attend" style="<%=show_item(attending_note(e, current_user))%>"> <%= attending_note(e, current_user)%></p>
+          </div>
+          <div class="card-contents">
+            <time datetime="2016-1-1">
+              <%= e.day.strftime('%B %d %Y %T').upcase %><br>
+            </time>
+            <div>
+              <h2 class="has-text-weight-semibold"> <%= e.title%></h2>
+              <p class="subtitle is-6"><%= current_user ? "@#{e.creator.username}" : ""%></p>
+              <div class="content has-text-grey">
+                <%= e.about[0..100].gsub(/\s\w+\s*$/,'...') %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+</div>

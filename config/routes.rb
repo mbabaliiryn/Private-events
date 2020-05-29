@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :events do
+    resources :attendances
+    resources :invites
+  end
+  root 'events#index'
+  get 'myevents' => 'users#show'
+  post 'attending', to: 'attendances#create'
+  resources :usersessions, only: %i[new create destroy]
+  resources :users, only: %i[new show create]
 end

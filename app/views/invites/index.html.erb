@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <h1>Invite members</h1>
+  <div class="table">
+    <div class="row header">
+      <div class="cell">
+        Userame
+      </div>
+      <div class="cell">
+        Accepted On
+      </div>
+      <div class="cell">
+        Email
+      </div>
+      <div class="cell">
+        Action
+      </div>
+    </div>
+    <% uninvited(@event, @users).each do |a|%>
+      <div class="row">
+        <div class="cell" data-title="Name">
+          <%= a.username%>
+        </div>
+        <div class="cell" data-title="Age">
+          <%=a.updated_at.strftime('%B %d, %Y')%>
+        </div>
+        <div class="cell" data-title="Occupation">
+          <%= a.email%>
+        </div>
+        <div class="cell" data-title="Occupation">
+          <%= link_to  " Invite ", event_attendances_path(@event, email: a.email), method: :post, class: "invites fas fa-plus"%>
+        </div>
+      </div>
+    <%end%>
+  </div>

@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;800&family=Rubik:ital,wght@0,300;0,500;0,700;1,300&display=swap')
+
+body
+    background: #fbfbfd
+    font-family: 'Rubik', sans-serif
+    min-height: 100vh
+    position: relative
+
+.content-wrapper
+    padding-bottom: 2.5rem
+.events-container
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    margin: 2rem 3rem
+    grid-gap: 2rem
+
+.event_hero
+    width: 100%
+    height: 60vh
+    background: url("https://images.pexels.com/photos/1652353/pexels-photo-1652353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") 40% 70% no-repeat
+    background-size: cover
+    border-radius: 10px
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: 10px 2rem
+    position: relative
+    h1
+        color: white
+        font-weight: 700
+        font-size: 4rem
+        padding: 0px 6rem
+    img
+        position: absolute
+        left: -5rem
+        top: 26rem
+        opacity: 0.5
+
+.home
+    width: 97%
+    margin: 0px auto
+.event-card
+    border-radius: 10px
+    box-shadow: 0px 0px 34px -7px rgba(0,0,0,0.4)
+    color: black
+    background: white
+    transition: 0.25s
+    height: 25rem
+    &:hover
+        box-shadow: 0px 0px 34px -1px rgba(0,0,0,0.4)
+    >div
+        padding: 1rem
+.card-img
+    height: 13rem
+    border: none
+    border-radius: 10px 10px 0px 0px
+    position: relative
+
+.card-contents
+    display: grid
+    grid-template-columns: 1fr 3fr
+    align-items: center
+    grid-gap: 10px
+    time
+        text-align: center
+        font-weight: 600
+        &::first-line
+            color: purple
+            font-weight: 700
+.attend
+    background: white
+    padding: 5px 10px
+    position: absolute
+    border-radius: 7px
+    font-weight: 700
+    transition: 0.25s
+    &:hover
+        background: #fbfbfd
+.upcoming-section
+    overflow-y: auto
+    min-height: 50vh
+    max-height: 120vh
+
+.upcoming-events
+    padding: 4rem 0px 2rem 3rem
+    font-size: 1.8rem
+    font-weight: 600
+
+.event-date-time
+    background: white
+    padding: 2rem
+    border-radius: 10px
+    width: 20vw
+    display: flex
+    flex-direction: column
+    p
+        text-align: center
+        margin-bottom: 10px
+    time
+        font-size: 14px
+        margin-bottom: 10px
+    h2
+        font-size: 1.2rem
+
+.book-now
+    width: 100%
+    background: #7848f4
+    padding: 8px
+    color: white
+    border-radius: 8px
+    font-weight: 700
+    text-align: center
+    margin-bottom: 10px
+    &:hover
+        color: #fbfbfd
+.attending-btn
+    width: 100%
+    background: #797093
+    padding: 8px
+    color: white
+    border-radius: 8px
+    font-weight: 700
+    text-align: center
+    margin-bottom: 10px
+    &:hover
+        color: #fbfbfd
+.event-view-title
+    position: absolute
+    left: 1rem
+    width: 50vw
+    color: white
+    h2
+        font-weight: 700
+        font-size: 2.4rem
+
+.title-space
+    padding: 2.5rem 0px
+    font-weight: 600
+    font-size: 1.8rem
+.content-spacing
+    padding-bottom: 2rem
+    >div
+        &:nth-child(1)
+            margin-right: 14rem
+.map
+    height: 40vh
+
+    iframe
+        width: 100%
+        height: 100%
+        border-radius: 8px
+.prev
+    background: #c7c5fc
+    border-radius: 5px
+    padding: 1rem  0px
+.new-post
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 60%
+    margin: 10rem auto
+    >div
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    form
+        width: 70%
+        input
+        &[type="text"],.title-input
+            width: 100%
+            height: 2rem
+            border-radius: 5px
+            padding: 2px 8px
+            border: 1px solid rgba(0,0,0,0.25)
+            &:focus
+                outline: none
+        input[type="submit"]
+            background: #263393
+            color: white
+            padding: 10px 1.3rem
+            border-radius: 8px
+            font-size: 14px
+            font-weight: 700
+        textarea
+            width: 100%
+            max-width: 100%
+            min-width: 100%
+            height: 5rem
+            max-height: 10rem
+            border-radius: 5px
+            padding: 8px
+            &:focus
+                outline: none
+    div[id="inline-form"]
+        display: flex
+        width: 100%
+        justify-content: space-between
+        input
+            width: 48%
+            height: 2rem
+            border-radius: 5px
+            padding: 2px 8px
+            border: 1px solid rgba(0,0,0,0.25)
+            &:focus
+                outline: none
+.send_invite
+    width: 100%
+    form
+        width: 100%
+        display: flex
+        input[type="email"]
+            width: 70%
+            height: 1.5rem
+            color: black
+            border: 1px solid rgba(0,0,0,0.25)
+            border-radius: 4px
+            padding-left: 2px
+
+        input[type="submit"]
+            width: 30%
+            height: 1.5rem
+            background: #263393
+            border-radius: 4px
+            color: white
+            cursor: pointer
+
+@media (min-width: 768px) and (max-width: 1024px)
+    .events-container
+        grid-template-columns: repeat(2, 1fr) !important
+        margin: 2rem 3rem
+        grid-gap: 2rem
+@media screen and ( max-width: 768px )
+    .events-container
+        grid-template-columns: 1fr !important
+        width: 100%
+        margin: 2rem auto
+@media (min-width:1024px) and ( max-width: 1300px )
+    .events-container
+        grid-template-columns: repeat(3, 1fr) !important
