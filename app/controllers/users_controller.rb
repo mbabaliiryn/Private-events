@@ -1,14 +1,10 @@
 class UsersController < ApplicationController
-  def index
+  def show
     @attendee = Attendance.where(attendee_id: current_user.id)
     @attendee = @attendee.map(&:event_id)
-    @events = Event.where(id: @attendee)
-  end
-
-  def show
+    @attended_events = Event.where(id: @attendee)
     @upcoming_events = Event.upcoming_events.where(creator_id: current_user.id)
     @prev_events = Event.previous_events.where(creator_id: current_user.id)
-    render 'events/index'
   end
 
   def new
