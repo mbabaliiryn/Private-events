@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   end
   root 'events#index'
   get 'myevents' => 'users#show'
-  get 'myinvites' => 'users#index'
   post 'attending', to: 'attendances#create'
   resources :usersessions, only: %i[new create destroy]
   resources :users, only: %i[new show create]

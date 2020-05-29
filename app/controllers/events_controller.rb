@@ -5,23 +5,16 @@ class EventsController < ApplicationController
     @prev_events = Event.previous_events
   end
 
-  # GET /authors/1
-  # GET /authors/1.json
   def show
     @event = Event.find(params[:id])
-    # @attendances = Attendance.new
   end
 
-  # GET /authors/new
   def new
     @event = Event.new
   end
 
-  # GET /authors/1/edit
   def edit; end
 
-  # POST /authors
-  # POST /authors.json
   def create
     @event = current_user.events.build(event_params)
     if @event.save
@@ -31,8 +24,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /authors/1
-  # PATCH/PUT /authors/1.json
   def update
     respond_to do |format|
       if @events.update(author_params)
@@ -45,8 +36,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /authors/1
-  # DELETE /authors/1.json
   def destroy
     @events.destroy
     respond_to do |format|
